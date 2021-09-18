@@ -14,14 +14,14 @@ const test2 = ['test',2,7,'a','a'];
 const mostRepeated = (arr1, arr2) => {
     let repeat = [];
 
-    //find repeated items
+    //find repeated items in two arrays
     for (let i of arr1) {
         for (let j of arr2) {
             if (i === j) repeat.push(i);
         }
     }
 
-    //looking for most repeated item
+    //looking for most repeated item in 'repeat' array
     while (repeat.length > 1) {
         repeat = repeat.filter((item, index) => index !== repeat.indexOf(item));
     }
