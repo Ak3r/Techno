@@ -12,14 +12,7 @@ const test1 = [1,2,3,3,'a','test'];
 const test2 = ['test',2,7,'a','a'];
 
 const mostRepeated = (arr1, arr2) => {
-    let repeat = [];
-
-    //find repeated items in two arrays
-    for (let i of arr1) {
-        for (let j of arr2) {
-            if (i === j) repeat.push(i);
-        }
-    }
+    let repeat = arr1.concat(arr2);
 
     //looking for most repeated item in 'repeat' array
     while (repeat.length > 1) {
