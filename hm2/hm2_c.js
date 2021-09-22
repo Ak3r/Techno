@@ -11,7 +11,7 @@
 // yourFunc([111896, 9999, 9985, 1024, 999999, 1000100, 60044943]) 
 // [111,90K, 10K, 9,99K 1,02K, 1M, 1M, 60,05M]
 
-let test1 = [111896, 9999, 9985, 1024, 999999, 1000100, 60044943];
+let test1 = [111896, 9999, 9985, 1024, 999999, 1000100, 60044943, 1000000000];
 
 function numFormatter(arr) {
     const res = [];
@@ -21,8 +21,11 @@ function numFormatter(arr) {
             case num > 999 && num < 999999: 
                 res.push(round(num, 10**3) + 'K');
                 break;
-            case num >= 999999: 
+            case num >= 999999 && num < 999999999: 
                 res.push(round(num, 10**6) + 'M');
+                break;
+            case num >= 999999999: 
+                res.push(round(num, 10**9) + 'B');
                 break;
             default:
                 res.push(num);
@@ -37,4 +40,4 @@ function round(num, del) {
     return Number(Math.round(num/del+'e'+2)+'e-'+2);
 }
 
-numFormatter(test1);
+console.log(numFormatter(test1));
