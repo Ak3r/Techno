@@ -37,7 +37,8 @@ function numFormatter(arr) {
 }
 
 function round(num, del) {
-    return Number(Math.round(num/del+'e'+2)+'e-'+2);
+    let res = +(Math.round((num/del)+0.001+'e'+2)+'e-'+2);
+    return res;
 }
 
 console.log(numFormatter(test1));
