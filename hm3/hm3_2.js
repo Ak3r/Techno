@@ -17,15 +17,50 @@ class Validator {
     dateReg = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
 
     isEmail() {
-        return this.mailReg.test(this.mail);
+        try {
+            if (this.mail === '') {
+                throw 'You need to enter an e-mail address.';
+            } else if (this.mail.indexOf('@') === -1) {
+                throw 'Email should have "@" symbol.';
+            } else if (!(/gmail.com$/).test(this.mail)) {
+                throw 'Email should ending like: "...gmail.com".';
+            }
+            else {
+                return this.mailReg.test(this.mail);
+            }
+        } catch(err) {
+            console.log(err);
+        }
     }
 
     isUrkainianPhoneNumber() {
-        return this.phoneReg.test(this.phone);
+        try {
+            if (this.phone === '') {
+                throw 'You need to enter an phone number.';
+            } else if (!(/^\+38/).test(this.phone)) {
+                throw 'Phone number should begining with "+38".';
+            } else if (this.mail.length !== 13) {
+                throw 'Type correct phone number.';
+            } else {
+                return this.phoneReg.test(this.phone);
+            }
+        } catch(err) {
+            console.log(err);
+        }
     }
 
     isDate() {
-        return this.dateReg.test(this.date);
+        try {
+            if (this.date === '') {
+                throw 'You need to enter a date'
+            } else if (!this.dateReg.test(this.date)) {
+                throw 'Type a date in YYYY-MM-DD format.'
+            } else {
+                return this.dateReg.test(this.date);
+            }
+        } catch(err) {
+            console.log(err);
+        }
     }
 }
 
